@@ -34,7 +34,7 @@ Markdown==3.5.1
 markdown-it-py==3.0.0
 MarkupSafe==2.1.3
 mdurl==0.1.2
-ml-dtypes==0.3.2  # Actualizado
+ml-dtypes~=0.2.0
 mpmath==1.3.0
 networkx==3.2.1
 nltk==3.8.1
