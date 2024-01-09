@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from transformers import pipeline
-
+from secciones.model_utils import cargar_modelo_y_vectorizador
 
 # Descargar recursos de NLTK
 nltk.download('punkt')
@@ -190,7 +190,8 @@ def predecir_suicidio_con_info(texto, modelo, tfidf_vectorizador):
     }
 
 
-def procesar_textos(modelo, tfidf_vectorizador):
+def procesar_textos():
+
     """
     Función principal para procesar textos en la aplicación Streamlit. Permite al usuario
     ingresar o subir un texto, y luego utiliza el modelo y el vectorizador para analizarlo.
@@ -199,7 +200,7 @@ def procesar_textos(modelo, tfidf_vectorizador):
     :param tfidf_vectorizador: Vectorizador TF-IDF utilizado en el modelo.
     """
     st.title("Analizar Texto")
-
+    modelo, tfidf_vectorizador = cargar_modelo_y_vectorizador()
     # Opción para ingresar texto manualmente
     text_input = st.text_area("Ingrese su texto aquí:")
 
