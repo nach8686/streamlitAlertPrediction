@@ -26,21 +26,6 @@ def main():
     clasificador_emociones = pipeline("text-classification",
                                       model="maxpe/bertin-roberta-base-spanish_sem_eval_2018_task_1")
 
-    # Descargar recursos de NLTK
-    @st.cache_data
-    def descargar_recursos_nltk():
-        """
-        Descarga los recursos necesarios de NLTK.
-
-        Esta función descarga los componentes 'punkt' y 'stopwords' de NLTK, que son necesarios para tokenizar y
-        preprocesar el texto en las funciones de análisis.
-
-        :return: None.
-        """
-        nltk.download('punkt')
-        nltk.download('stopwords')
-
-    descargar_recursos_nltk()
 
     # Menú de opciones
     with st.sidebar:
