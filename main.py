@@ -1,5 +1,4 @@
 import streamlit as st
-import joblib
 import nltk
 from secciones.procesar_textos import procesar_textos  # Asegúrate de que esta ruta sea correcta
 from secciones.home_page import home_page
@@ -20,19 +19,6 @@ def main():
     logo_log_bar = r'imagenes/Captura de pantalla 2024-01-06 a las 17.13.19.png'
     st.set_page_config(page_title='Análisis sentimientos', page_icon=logo_log_bar, layout="wide")
 
-    # Cargar el modelo y el vectorizador
-    @st.cache_data
-    def cargar_modelo_y_vectorizador():
-        """
-        Carga el modelo de aprendizaje automático y el vectorizador TF-IDF desde archivos almacenados.
-
-        Esta función utiliza joblib para cargar un modelo preentrenado y un vectorizador TF-IDF. Estos componentes son
-        esenciales para procesar y analizar el texto ingresado en la aplicación.
-
-        :return: Tupla que contiene el modelo y el vectorizador.
-        """
-        return joblib.load('modelo_nn_g2.pkl'), joblib.load('tfidf_vectorizador2.pkl')
-
     # Descargar recursos de NLTK
     @st.cache_data
     def descargar_recursos_nltk():
@@ -47,7 +33,6 @@ def main():
         nltk.download('punkt')
         nltk.download('stopwords')
 
-    modelo, tfidf_vectorizador = cargar_modelo_y_vectorizador()
     descargar_recursos_nltk()
 
     # Menú de opciones
@@ -93,7 +78,7 @@ def main():
     # Analizar texto
     elif st.session_state['selected'] == "Analizar texto":
         st.image("imagenes/uoc2.png", use_column_width=True)
-        procesar_textos(modelo, tfidf_vectorizador)
+        procesar_textos()
 
     # Info
     elif st.session_state['selected'] == "Info":
