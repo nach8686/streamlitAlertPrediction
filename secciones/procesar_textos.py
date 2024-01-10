@@ -195,6 +195,9 @@ def procesar_textos():
     """
     Función principal para procesar textos en la aplicación Streamlit. Permite al usuario
     ingresar o subir un texto, y luego utiliza el modelo y el vectorizador para analizarlo.
+
+    :param modelo: Modelo de machine learning para la predicción.
+    :param tfidf_vectorizador: Vectorizador TF-IDF utilizado en el modelo.
     """
     st.title("Analizar Texto")
     modelo, tfidf_vectorizador = cargar_modelo_y_vectorizador()
